@@ -1,0 +1,19 @@
+{
+    "name": "NimoTV",
+    "description": "description",
+    "version": "0.1",
+    "manifest_version": 3,
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.nimo.tv/*"
+            ],
+            "css": [
+                "main.css"
+            ],
+            "js": [
+                "main.js"
+            ]
+        }
+    ]
+}
