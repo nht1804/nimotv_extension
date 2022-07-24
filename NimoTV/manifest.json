@@ -9,14 +9,29 @@
                 "https://*.nimo.tv/*"
             ],
             "css": [
-                "main.css"
+                "./content_scripts/main.css"
             ],
             "js": [
-                "main.js"
+                "./content_scripts/main.js"
             ]
         }
     ],
     "permissions": [
         "storage"
-    ]
+    ],
+    "action": {
+        "default_popup": "./action/popup.html",
+        "default_icon": {
+            "16": "./assets/logo.png",
+            "32": "./assets/logo.png",
+            "48": "./assets/logo.png",
+            "128": "./assets/logo.png"
+        }
+    },
+    "icons": {
+        "16": "./assets/logo.png",
+        "32": "./assets/logo.png",
+        "48": "./assets/logo.png",
+        "128": "./assets/logo.png"
+    }
 }
