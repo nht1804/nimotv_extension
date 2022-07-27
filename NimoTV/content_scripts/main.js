@@ -73,18 +73,25 @@ function insertSetting() {
 }
 function insertFontSetting(parent) {
     let save_font_setting = () => {
-        font_setting.size = input.value;
-        for (let i = 0; i < styleSheet.cssRules.length; i++) {
-            if (styleSheet.cssRules[i].selectorText.replace(/\s/g, '') === font_setting.selector) {
-                styleSheet.deleteRule(i);
+        let color_change = "#00ff33";
+        if (input.value !== "") {
+            font_setting.size = input.value;
+            for (let i = 0; i < styleSheet.cssRules.length; i++) {
+                if (styleSheet.cssRules[i].selectorText.replace(/\s/g, '') === font_setting.selector) {
+                    styleSheet.deleteRule(i);
+                }
             }
+            styleSheet.insertRule(`${font_setting.selector}{font-size:${font_setting.size}px;}`);
+            chrome.storage.sync.set({ f_setting: font_setting });
         }
-        styleSheet.insertRule(`${font_setting.selector}{font-size:${font_setting.size}px;}`);
-        chrome.storage.sync.set({ f_setting: font_setting });
-        inputWrap.style.borderColor = "#00ff33";
+        else {
+            input.value = font_setting.size;
+            color_change = "#ff3f3f";
+        }
+        inputWrap.style.borderColor = color_change;
         setTimeout(function () {
             inputWrap.style.borderColor = "#ffffff";
-        }, 3000)
+        }, 2000)
     }
     let wrap = document.createElement("div");
     wrap.classList.add("nimoE_test");
